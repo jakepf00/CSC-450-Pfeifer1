@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class PlayerBaseState : State {
+    #region Animator Hash Data
+    protected readonly int MovementSpeedHash = Animator.StringToHash("MovementSpeed");
+    #endregion
+    #region Damping Data
+    protected const float AnimationDamping = 0.1f;
+    protected const float RotationDamping = 10.0f;
+    #endregion
+    protected PlayerStateMachine _stateMachine;
+    public PlayerBaseState(PlayerStateMachine stateMachine) {
+        _stateMachine = stateMachine;
+    }
+    protected void Move(float deltaTime) {
+        // Without movement/force applied
+        Move(Vector3.zero, deltaTime);
+    }
+    protected void Move(Vector3 movement, float deltaTime) {
+        // With movement/force applied
+        _stateMachine.CharacterController.Move((movement + _stateMachine.ForceReceiver.Movement) * deltaTime);
+    }
+}
