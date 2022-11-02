@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class PlayerMovementState : PlayerBaseState
-{
+public class PlayerMovementState : PlayerBaseState {
     public PlayerMovementState(PlayerStateMachine stateMachine) : base(stateMachine) {}
 
-    public override void Enter() {}
+    public override void Enter() {
+        _stateMachine.Animator.CrossFadeInFixedTime(MovementBlendTreeHash, CrossFadeDuration);
+    }
 
     public override void Exit() {}
 
