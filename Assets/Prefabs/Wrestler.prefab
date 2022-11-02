@@ -42,10 +42,11 @@ GameObject:
   m_Component:
   - component: {fileID: 901634389064462691}
   - component: {fileID: 3031191678976683261}
-  - component: {fileID: 5878196144298087827}
   - component: {fileID: 4609451557900958761}
   - component: {fileID: 65939903488788500}
   - component: {fileID: 8494633875412216216}
+  - component: {fileID: 5300021008515407264}
+  - component: {fileID: 3891441937291942981}
   m_Layer: 0
   m_Name: Wrestler
   m_TagString: NPC
@@ -81,22 +82,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac258616305af490fa28b57e1e1d414a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5878196144298087827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171745707631587757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60fad994c44866f42904812c743e1147, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _controller: {fileID: 4609451557900958761}
-  _verticalVelocity: 10
-  _gravityModifier: 5
-  _drag: 0.1
+  <CharacterController>k__BackingField: {fileID: 4609451557900958761}
+  <Animator>k__BackingField: {fileID: 1963560239685715258}
+  <ForceReceiver>k__BackingField: {fileID: 3891441937291942981}
+  <Weapon>k__BackingField: {fileID: 7418218770700981710}
+  <NavMeshAgent>k__BackingField: {fileID: 5300021008515407264}
+  <MovementSpeed>k__BackingField: 5
+  <PlayerChaseRange>k__BackingField: 7
+  <PlayerAttackRange>k__BackingField: 1.5
+  <AttackDamage>k__BackingField: -10
 --- !u!143 &4609451557900958761
 CharacterController:
   m_ObjectHideFlags: 0
@@ -140,6 +134,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthMaximum: 200
+--- !u!195 &5300021008515407264
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171745707631587757}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.35
+  m_Speed: 1
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.86
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3891441937291942981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171745707631587757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6bd0a2910280fb89a3fee0a9228b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _controller: {fileID: 4609451557900958761}
+  _verticalVelocity: 10
+  _gravityModifier: 5
+  _drag: 0.1
 --- !u!1 &213452031278270605
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753738749800479039}
   - component: {fileID: 1963560239685715258}
+  - component: {fileID: 4555757254014685249}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -451,6 +484,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4555757254014685249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377354597336720261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ff7de2ea0937eea9304c2ef678a8fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponLogic: {fileID: 3091040993569411761}
 --- !u!1 &1901377517752104692
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,6 +915,83 @@ Transform:
   m_Father: {fileID: 5196905900474580560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3091040993569411761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8742872707710668310}
+  - component: {fileID: 7873920364204993113}
+  - component: {fileID: 2652275681826886111}
+  - component: {fileID: 7418218770700981710}
+  m_Layer: 0
+  m_Name: FistLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8742872707710668310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091040993569411761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.081, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 462073811146596636}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7873920364204993113
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091040993569411761}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &2652275681826886111
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091040993569411761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7418218770700981710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3091040993569411761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ed819c6610c70898ccc6b483611ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myCollider: {fileID: 4609451557900958761}
 --- !u!1 &3246345674700062275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1374,7 @@ Transform:
   - {fileID: 1107391268289648316}
   - {fileID: 7012183619522509272}
   - {fileID: 7702879743528569386}
+  - {fileID: 8742872707710668310}
   m_Father: {fileID: 4345814820661816188}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
