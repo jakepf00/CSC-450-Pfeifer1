@@ -4,10 +4,13 @@ public class PlayerMovementState : PlayerBaseState {
     public PlayerMovementState(PlayerStateMachine stateMachine) : base(stateMachine) {}
 
     public override void Enter() {
+        _stateMachine.InputReader.JumpEvent += OnJump;
         _stateMachine.Animator.CrossFadeInFixedTime(MovementBlendTreeHash, CrossFadeDuration);
     }
 
-    public override void Exit() {}
+    public override void Exit() {
+        _stateMachine.InputReader.JumpEvent -= OnJump;
+    }
 
     public override void Tick(float deltaTime) {
         if (_stateMachine.InputReader.IsAttacking) {
@@ -23,6 +26,10 @@ public class PlayerMovementState : PlayerBaseState {
         Move(movement * _stateMachine.MovementSpeed, deltaTime);
         Rotate(movement, deltaTime);
         _stateMachine.Animator.SetFloat(MovementSpeedHash, 1.0f, AnimationDamping, deltaTime);
+    }
+
+    void OnJump() {
+        _stateMachine.SwitchState(new PlayerJumpingState(_stateMachine));
     }
 
     void Rotate(Vector3 movement, float deltaTime) {

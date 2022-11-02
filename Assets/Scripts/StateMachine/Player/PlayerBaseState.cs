@@ -10,7 +10,7 @@ public abstract class PlayerBaseState : State {
     #region Damping Data
     protected const float AnimationDamping = 0.1f;
     protected const float RotationDamping = 10.0f;
-    protected const float CrossFadeDuration = 1.0f;
+    protected const float CrossFadeDuration = 0.5f;
     #endregion
     protected PlayerStateMachine _stateMachine;
     public PlayerBaseState(PlayerStateMachine stateMachine) {
