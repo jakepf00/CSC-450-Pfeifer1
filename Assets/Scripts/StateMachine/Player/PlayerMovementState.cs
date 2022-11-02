@@ -10,6 +10,9 @@ public class PlayerMovementState : PlayerBaseState {
     public override void Exit() {}
 
     public override void Tick(float deltaTime) {
+        if (_stateMachine.InputReader.IsAttacking) {
+            _stateMachine.SwitchState(new PlayerAttackingState(_stateMachine, 0));
+        }
         if (_stateMachine.InputReader.MovementValue == Vector2.zero) {
             _stateMachine.Animator.SetFloat(MovementSpeedHash, 0.0f, AnimationDamping, deltaTime);
             Move(deltaTime);
