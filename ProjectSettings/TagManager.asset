@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Environment
   - NPC
+  - Patrolpoint
   layers:
   - Default
   - TransparentFX
