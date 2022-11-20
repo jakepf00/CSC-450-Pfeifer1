@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,10 +13,22 @@ public class EnemyStateMachine : StateMachine {
     #region Other Data
     [field: SerializeField] public float MovementSpeed { get; private set; } = 5.0f;
     [field: SerializeField] public float PlayerChaseRange { get; private set; } = 7.0f;
-    [field: SerializeField] public float PlayerAttackRange { get; private set; } = 1.5f;
+    [field: SerializeField] public float PlayerAttackRange { get; private set; } = 1.0f;
     [field: SerializeField] public int AttackDamage { get; private set; } = -10;
+    [field: SerializeField] public float AttackKnockback { get; private set; } = 10.0f;
     public GameObject Player { get; private set; }
     #endregion
+    #region Patrolling Data
+    public List<Transform> Patrolpoints = new List<Transform>();
+    public int CurrentPatrolpoint { get; set; } = 0;
+    public float PatrolpointRange { get; private set; } = 1.0f;
+    #endregion
+
+    void Awake() {
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Patrolpoint")) {
+            Patrolpoints.Add(go.GetComponent<Transform>());
+        }
+    }
     void Start() {
         Player = GameObject.FindGameObjectWithTag("Player");
         NavMeshAgent.updatePosition = false;

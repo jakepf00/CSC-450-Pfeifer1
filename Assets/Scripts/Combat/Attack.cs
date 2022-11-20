@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+
 [Serializable]
 
 public class Attack {
@@ -13,7 +14,8 @@ public class Attack {
     #endregion
     #region Force Data
     [field: SerializeField] public float Force { get; private set; } = 15.0f;
-    [field: SerializeField] public float ForceTime {get; private set; } = 0.35f;
+    [field: SerializeField] public float ForceTime { get; private set; } = 0.35f;
+    [field: SerializeField] public float KnockBack { get; private set; } = 10.0f;
     #endregion
     #region Attack Data
     [field: SerializeField] public int Damage { get; private set; } = -10;

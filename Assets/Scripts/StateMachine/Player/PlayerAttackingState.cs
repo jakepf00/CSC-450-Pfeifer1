@@ -8,7 +8,7 @@ public class PlayerAttackingState : PlayerBaseState {
         _attack = _stateMachine.Attacks[attackIndex];
     }
     public override void Enter() {
-        _stateMachine.Weapon.SetAttackData(_attack.Damage);
+        _stateMachine.Weapon.SetAttackData(_attack.Damage, _attack.KnockBack);
         _stateMachine.Animator.CrossFadeInFixedTime(_attack.AnimationName, _attack.TransitionTime);
     }
     public override void Tick(float deltaTime) {

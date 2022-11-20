@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EnemyBaseState : State {
@@ -10,21 +12,29 @@ public abstract class EnemyBaseState : State {
     protected const float RotationDamping = 10.0f;
     protected const float CrossFadeDuration = 1.0f;
     #endregion
+
     protected EnemyStateMachine _stateMachine;
+
     public EnemyBaseState(EnemyStateMachine stateMachine) {
         _stateMachine = stateMachine;
     }
-    protected bool IsInChaseRange() {
+
+    protected bool IsInAttackRange() {
         if (_stateMachine.Player == null) { return false; }
+        if (_stateMachine.Player.GetComponent<Health>().IsDead()) { return false; }
         float distanceToPlayer = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
         return distanceToPlayer <= _stateMachine.PlayerAttackRange * _stateMachine.PlayerAttackRange;
     }
+    protected bool IsInChaseRange() {
+        if (_stateMachine.Player == null) { return false; }
+        if (_stateMachine.Player.GetComponent<Health>().IsDead()) { return false; }
+        float distanceToPlayer = (_stateMachine.Player.transform.position - _stateMachine.transform.position).sqrMagnitude;
+        return distanceToPlayer <= _stateMachine.PlayerChaseRange * _stateMachine.PlayerChaseRange;
+    }
     protected void Move(float deltaTime) {
-        // Without movement/force applied
         Move(Vector3.zero, deltaTime);
     }
     protected void Move(Vector3 movement, float deltaTime) {
-        // With movement/force applied
         _stateMachine.CharacterController.Move((movement + _stateMachine.ForceReceiver.Movement) * deltaTime);
     }
     protected void FacePlayer() {

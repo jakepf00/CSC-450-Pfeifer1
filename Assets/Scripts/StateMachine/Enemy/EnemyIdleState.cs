@@ -15,11 +15,11 @@ public class EnemyIdleState : EnemyBaseState {
         _idleTimer -= deltaTime;
         if (_idleTimer <= 0.0f) {
             if (IsInChaseRange()) {
-                // Transitioning to EnemyChasingState
+                _stateMachine.SwitchState(new EnemyChasingState(_stateMachine));
                 return;
             }
             else {
-                // Transitioning to EnemyPatrollingState
+                _stateMachine.SwitchState(new EnemyPatrollingState(_stateMachine));
                 return;
             }
         }

@@ -16,20 +16,14 @@ public class ForceReceiver : MonoBehaviour {
     public Vector3 Movement => Vector3.up * _verticalVelocity;
     void Update() {
         if (_verticalVelocity < 0.0f && _controller.isGrounded) {
-            // On ground
-            // Apply small negative force to keep on ground
             _verticalVelocity = Physics.gravity.y * _gravityModifier * Time.deltaTime;
         } else {
-            // Not on ground
-            // Update negative force
             _verticalVelocity += Physics.gravity.y * _gravityModifier * Time.deltaTime;
         }
-        _impact = Vector3.SmoothDamp(
-            _impact, // Current value
-            Vector3.zero, // Target value
-            ref _dampingVelocity, // Current velocity
-            _drag // Smooth time
-        );
+        _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity, _drag);
+        if (_impact.sqrMagnitude < 0.2f * 0.2f) {
+            _impact = Vector3.zero;
+        }
     }
     public virtual void AddForce(Vector3 force) {
         _impact += force;
