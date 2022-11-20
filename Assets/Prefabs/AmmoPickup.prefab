@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0878df6565330877b7f639fd2b8df09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wealthValue: 10
+  _ammoValue: 10
   _destroyTime: 0.15
 --- !u!1001 &1209812832622251410
 PrefabInstance:

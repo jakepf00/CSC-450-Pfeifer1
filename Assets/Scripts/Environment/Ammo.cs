@@ -18,6 +18,6 @@ public class Ammo : MonoBehaviour {
         _ammoCurrent = _ammoStarting;
     }
     public void UIUpdate() {
-        //UIController.Instance._ammoText.text = _ammoCurrent.ToString();
+        UIController.Instance._ammoText.text = _ammoCurrent.ToString();
     }
 }
