@@ -9,6 +9,7 @@ public class EnemyStateMachine : StateMachine {
     [field: SerializeField] public EnemyForceReceiver ForceReceiver { get; private set; }
     [field: SerializeField] public WeaponDamage Weapon { get; private set; }
     [field: SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
+    [field: SerializeField] public Health Health { get; private set; }
     #endregion
     #region Other Data
     [field: SerializeField] public float MovementSpeed { get; private set; } = 5.0f;
@@ -34,6 +35,20 @@ public class EnemyStateMachine : StateMachine {
         NavMeshAgent.updatePosition = false;
         NavMeshAgent.updateRotation = false;
         SwitchState(new EnemyIdleState(this));
+    }
+    void OnEnable() {
+        Health.DamageEvent += OnDamage;
+        Health.DeathEvent += OnDeath;
+    }
+    void OnDisable() {
+        Health.DamageEvent -= OnDamage;
+        Health.DeathEvent -= OnDeath;
+    }
+    void OnDamage() {
+        SwitchState(new EnemyImpactState(this));
+    }
+    void OnDeath() {
+        SwitchState(new EnemyDeathState(this));
     }
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;

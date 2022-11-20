@@ -4197,6 +4197,7 @@ MonoBehaviour:
   <ForceReceiver>k__BackingField: {fileID: 475313131186310596}
   <Targeter>k__BackingField: {fileID: 3047319899586360395}
   <Weapon>k__BackingField: {fileID: 6274434992996622854}
+  <Health>k__BackingField: {fileID: 4382355514265546717}
   <MovementSpeed>k__BackingField: 10
   <JumpForce>k__BackingField: 15
   <Attacks>k__BackingField:
@@ -4206,6 +4207,7 @@ MonoBehaviour:
     <ComboTime>k__BackingField: 0
     <Force>k__BackingField: 15
     <ForceTime>k__BackingField: 0.35
+    <KnockBack>k__BackingField: 10
     <Damage>k__BackingField: -10
 --- !u!143 &124253939129201611
 CharacterController:
@@ -4278,7 +4280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5738c6a6e56c3a80bb108d935dc2acb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wealthStarting: 0
+  _ammoStarting: 0
 --- !u!1 &9214032818361963343
 GameObject:
   m_ObjectHideFlags: 0
