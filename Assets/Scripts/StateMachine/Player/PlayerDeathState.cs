@@ -16,7 +16,7 @@ public class PlayerDeathState : PlayerBaseState {
     public override void Tick(float deltaTime) {
         _deathTimer -= deltaTime;
         if (_deathTimer <= 0.0f) {
-            //GameController.Instance.Restart();
+            GameController.Instance.Restart();
             _stateMachine.SwitchState(new PlayerMovementState(_stateMachine));
             return;
         }

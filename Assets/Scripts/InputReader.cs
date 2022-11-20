@@ -16,10 +16,6 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions {
         _controls.Player.Enable();
     }
 
-    void OnDestroy() {
-        _controls.Player.Disable();
-    }
-
     // Update is called once per frame
     void Update()
     {

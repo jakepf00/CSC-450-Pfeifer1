@@ -20,7 +20,7 @@ public class Checkpoint : MonoBehaviour {
             _checkpointOFF.SetActive(false);
             _checkpointON.SetActive(true);
 
-            //GameController.Instance.RespawnPosition = gameObject.transform.position;
+            GameController.Instance.RespawnPosition = gameObject.transform.position;
         }
     }
 }

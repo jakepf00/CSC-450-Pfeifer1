@@ -26,11 +26,10 @@ public class UIController : MonoBehaviour {
         }
     }
     void Start() {
-        //_fadeScreen = GameObject.Find("Fade Screen").GetComponent<Image>();
-        //Fading = FadeState.FROM_DARK;
+        _fadeScreen = GameObject.Find("Fade Screen").GetComponent<Image>();
+        Fading = FadeState.FROM_DARK;
     }
     void Update() {
-        /*
         switch(Fading) {
             case FadeState.FROM_DARK:
                 _fadeScreen.color = new Color(_fadeScreen.color.r, _fadeScreen.color.g, _fadeScreen.color.b,
@@ -47,6 +46,5 @@ public class UIController : MonoBehaviour {
                 }
                 break;
         }
-        */
     }
 }
