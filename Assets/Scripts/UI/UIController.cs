@@ -6,13 +6,19 @@ public class UIController : MonoBehaviour {
     #region Singleton Pattern
     public static UIController Instance { get; private set; }
     #endregion
+    #region UI Screen Data
+    Image _fadeScreen;
+    public GameObject pauseScreen;
+    public GameObject optionsScreen;
+    public Slider musicSlider;
+    public Slider sfxSlider;
+    #endregion
     #region UI Data
     public TextMeshProUGUI _healthText;
     public Slider _healthSlider;
     public TextMeshProUGUI _ammoText;
     #endregion
     #region Fade Data
-    Image _fadeScreen;
     public enum FadeState { IDLE, FROM_DARK, TO_DARK }
     public FadeState Fading { get; set; }
     [SerializeField] float _fadeTime = 3.0f;
@@ -26,6 +32,7 @@ public class UIController : MonoBehaviour {
         }
     }
     void Start() {
+        pauseScreen = GameObject.Find("Pause Screen");
         _fadeScreen = GameObject.Find("Fade Screen").GetComponent<Image>();
         Fading = FadeState.FROM_DARK;
     }
@@ -46,5 +53,23 @@ public class UIController : MonoBehaviour {
                 }
                 break;
         }
+    }
+    public void Resume() {
+        GameController.Instance.PauseGame();
+    }
+
+    public void OpenOptions() {
+        optionsScreen.SetActive(true);
+    }
+    public void CloseOptions() {
+        optionsScreen.SetActive(false);
+    }
+    public void LevelSelect() {}
+    public void MainMenu() {}
+    public void SetMusicLevel() {
+        AudioController.Instance.SetMusicLevel();
+    }
+    public void SetSFXLevel() {
+        AudioController.Instance.SetSFXLevel();
     }
 }

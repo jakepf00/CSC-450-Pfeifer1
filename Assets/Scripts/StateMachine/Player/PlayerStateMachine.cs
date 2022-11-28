@@ -24,15 +24,20 @@ public class PlayerStateMachine : StateMachine {
     void OnEnable() {
         Health.DamageEvent += OnDamage;
         Health.DeathEvent += OnDeath;
+        InputReader.PauseEvent += OnPause;
     }
     void OnDisable() {
         Health.DamageEvent -= OnDamage;
         Health.DeathEvent -= OnDeath;
+        InputReader.PauseEvent -= OnPause;
     }
     void OnDamage() {
         SwitchState(new PlayerImpactState(this));
     }
     void OnDeath() {
         SwitchState(new PlayerDeathState(this));
+    }
+    void OnPause() {
+        GameController.Instance.PauseGame();
     }
 }

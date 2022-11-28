@@ -3,10 +3,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputReader : MonoBehaviour, Controls.IPlayerActions {
+    #region Event Data
     public bool IsAttacking { get; private set; } = false;
     public Vector2 MovementValue { get; private set; }
     public event Action JumpEvent;
+    public event Action PauseEvent;
     Controls _controls;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions {
         }
         else if (context.canceled) {
             IsAttacking = false;
+        }
+    }
+    public void OnPause(InputAction.CallbackContext context) {
+        if (context.performed) {
+            PauseEvent?.Invoke();
         }
     }
 }

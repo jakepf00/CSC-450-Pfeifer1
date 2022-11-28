@@ -65,4 +65,18 @@ public class GameController : MonoBehaviour {
         UIController.Instance.Fading = UIController.FadeState.FROM_DARK;
 
     }
+    public void PauseGame() {
+        if (UIController.Instance.pauseScreen.activeInHierarchy) {
+            UIController.Instance.pauseScreen.SetActive(false);
+            Time.timeScale = 1.0f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else {
+            UIController.Instance.pauseScreen.SetActive(true);
+            Time.timeScale = 0.0f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 }
