@@ -8,10 +8,14 @@ public class PlayerDeathState : PlayerBaseState {
     [SerializeField] float _deathWaitTime = 5.0f;
     float _deathTimer = 0.0f;
     #endregion
+    #region Audio Data
+    [SerializeField] int _sfxToPlay = 0;
+    #endregion
     public PlayerDeathState(PlayerStateMachine stateMachine) : base(stateMachine) {}
     public override void Enter() {
         _deathTimer = _deathWaitTime;
         _stateMachine.Animator.CrossFadeInFixedTime(DeathHash, CrossFadeDuration);
+        AudioController.Instance.PlaySFX(_sfxToPlay);
     }
     public override void Tick(float deltaTime) {
         _deathTimer -= deltaTime;

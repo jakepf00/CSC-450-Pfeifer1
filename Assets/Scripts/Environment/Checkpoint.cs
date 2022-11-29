@@ -6,6 +6,9 @@ public class Checkpoint : MonoBehaviour {
     [SerializeField] GameObject _checkpointON;
     [SerializeField] Vector3 _position = Vector3.zero;
     #endregion
+    #region Audio Data
+    [SerializeField] int _sfxToPlay = 3;
+    #endregion
     void Start() {
         _checkpointOFF.SetActive(true);
         _checkpointON.SetActive(false);
@@ -19,6 +22,7 @@ public class Checkpoint : MonoBehaviour {
             }
             _checkpointOFF.SetActive(false);
             _checkpointON.SetActive(true);
+            AudioController.Instance.PlaySFX(_sfxToPlay);
 
             GameController.Instance.RespawnPosition = gameObject.transform.position;
         }

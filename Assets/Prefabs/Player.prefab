@@ -3204,6 +3204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myCollider: {fileID: 124253939129201611}
+  _sfxToPlay: 1
 --- !u!1 &6604979929383816684
 GameObject:
   m_ObjectHideFlags: 0
@@ -4201,7 +4202,7 @@ MonoBehaviour:
   <MovementSpeed>k__BackingField: 10
   <JumpForce>k__BackingField: 15
   <Attacks>k__BackingField:
-  - <AnimationName>k__BackingField: Punching
+  - <AnimationName>k__BackingField: Punch
     <TransitionTime>k__BackingField: 0.1
     <ComboIndex>k__BackingField: -1
     <ComboTime>k__BackingField: 0

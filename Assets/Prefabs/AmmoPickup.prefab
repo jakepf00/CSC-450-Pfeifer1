@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ammoValue: 10
   _destroyTime: 0.15
+  _sfxToPlay: 5
 --- !u!1001 &1209812832622251410
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthValue: -10
   _destroyTime: 0
+  _sfxToPlay: 2
 --- !u!1001 &2753352141235075720
 PrefabInstance:
   m_ObjectHideFlags: 0

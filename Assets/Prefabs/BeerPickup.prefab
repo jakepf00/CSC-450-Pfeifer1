@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthValue: 20
   _destroyTime: 0.15
+  _sfxToPlay: 4
 --- !u!114 &1966724683499702577
 MonoBehaviour:
   m_ObjectHideFlags: 0
