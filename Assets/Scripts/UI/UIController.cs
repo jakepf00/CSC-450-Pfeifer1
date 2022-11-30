@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -23,6 +24,11 @@ public class UIController : MonoBehaviour {
     public FadeState Fading { get; set; }
     [SerializeField] float _fadeTime = 3.0f;
     #endregion
+    #region Scene Data
+    [SerializeField] string _mainMenu;
+    [SerializeField] string _levelSelect;
+    #endregion
+
     void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(this); // Already exists
@@ -64,8 +70,12 @@ public class UIController : MonoBehaviour {
     public void CloseOptions() {
         optionsScreen.SetActive(false);
     }
-    public void LevelSelect() {}
-    public void MainMenu() {}
+    public void LevelSelect() {
+        SceneManager.LoadScene(_levelSelect);
+    }
+    public void MainMenu() {
+        SceneManager.LoadScene(_mainMenu);
+    }
     public void SetMusicLevel() {
         AudioController.Instance.SetMusicLevel();
     }

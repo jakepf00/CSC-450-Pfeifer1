@@ -4192,6 +4192,8 @@ MonoBehaviour:
   _healthSlider: {fileID: 676140037}
   _ammoText: {fileID: 1917393967}
   _fadeTime: 5
+  _mainMenu: Main Menu
+  _levelSelect: Level Select
 --- !u!114 &1065707944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6203,7 +6205,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600424355}
-  m_LocalRotation: {x: 0.0035820396, y: -0.0000000017218192, z: 6.1676645e-12, w: 0.9999936}
+  m_LocalRotation: {x: 0.0035820424, y: -6.065234e-10, z: 2.1726074e-12, w: 0.9999936}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
