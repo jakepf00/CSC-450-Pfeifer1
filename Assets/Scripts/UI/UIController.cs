@@ -72,9 +72,11 @@ public class UIController : MonoBehaviour {
     }
     public void LevelSelect() {
         SceneManager.LoadScene(_levelSelect);
+        Time.timeScale = 1.0f;
     }
     public void MainMenu() {
         SceneManager.LoadScene(_mainMenu);
+        Time.timeScale = 1.0f;
     }
     public void SetMusicLevel() {
         AudioController.Instance.SetMusicLevel();

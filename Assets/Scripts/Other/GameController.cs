@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     #region Singleton Pattern
@@ -16,6 +17,12 @@ public class GameController : MonoBehaviour {
     [SerializeField] Vector3 _respawnOffset;
     [SerializeField] float _respawnTime = 2.0f;
     #endregion
+    #region Level End Data
+    [SerializeField] int _levelEndMusic;
+    [SerializeField] float _levelEndTime = 2.0f;
+    [SerializeField] string _LevelToLoad;
+    #endregion
+    
     void Awake() {
         if (Instance != null && Instance != this) {
             Destroy(this);
@@ -64,6 +71,11 @@ public class GameController : MonoBehaviour {
         Player.SetActive(true);
         UIController.Instance.Fading = UIController.FadeState.FROM_DARK;
 
+    }
+    public IEnumerator LevelEndCoroutine() {
+        AudioController.Instance.PlayMusic(_levelEndMusic);
+        yield return new WaitForSeconds(_levelEndTime);
+        SceneManager.LoadScene(_LevelToLoad);
     }
     public void PauseGame() {
         if (UIController.Instance.pauseScreen.activeInHierarchy) {
