@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pfeifer1.unity
     guid: e2a776deb487ca81c935d84ec85f3ea3
+  - enabled: 1
+    path: Assets/Scenes/Pfeifer2.unity
+    guid: 84d994136f4a45816a5491b84c3f6e72
   m_configObjects: {}
