@@ -41,6 +41,8 @@ public class UIController : MonoBehaviour {
         pauseScreen = GameObject.Find("Pause Screen");
         _fadeScreen = GameObject.Find("Fade Screen").GetComponent<Image>();
         Fading = FadeState.FROM_DARK;
+        CloseOptions();
+        Resume();
     }
     void Update() {
         switch(Fading) {
