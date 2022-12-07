@@ -26,9 +26,9 @@ public class EnemyStateMachine : StateMachine {
     #endregion
 
     void Awake() {
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Patrolpoint")) {
-            Patrolpoints.Add(go.GetComponent<Transform>());
-        }
+        //foreach (GameObject go in GameObject.FindGameObjectsWithTag("Patrolpoint")) {
+        //    Patrolpoints.Add(go.GetComponent<Transform>());
+        //}
     }
     void Start() {
         Player = GameObject.FindGameObjectWithTag("Player");
